@@ -37,6 +37,8 @@
   },
   "dependencies": {
     "@material/slider": "^0.33.0",
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "phrase-tree": "^1.0.0",
+    "query-string": "^6.0.0"
   }
 }

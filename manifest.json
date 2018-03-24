@@ -5,7 +5,8 @@
   "description": "Vulgarisateur de nouvelle radio-canada",
   "permissions": [
     "activeTab",
-    "http://*.radio-canada.ca/*"
+    "http://*.radio-canada.ca/*",
+    "http://nlp.eastus.cloudapp.azure.com/nlp"
   ],
   "content_scripts": [
     {
