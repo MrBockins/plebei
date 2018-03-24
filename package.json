@@ -1,0 +1,36 @@
+{
+  "name": "plebei",
+  "version": "1.0.0",
+  "description": "chrome extension for radio-canada hackathon 2018",
+  "main": "plebei.js",
+  "scripts": {
+    "start": "webpack -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrBockins/plebei.git"
+  },
+  "author": "tcl-rocketscience",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrBockins/plebei/issues"
+  },
+  "homepage": "https://github.com/MrBockins/plebei#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
+    "import-glob-loader": "^1.1.0",
+    "mini-css-extract-plugin": "^0.2.0",
+    "node-sass": "^4.7.2",
+    "path": "^0.12.7",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.3",
+    "url-loader": "^1.0.1",
+    "webpack": "^3.10.0",
+    "webpack-cli": "^2.0.13"
+  }
+}
