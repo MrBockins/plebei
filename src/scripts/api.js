@@ -2,6 +2,9 @@ import axios from "axios";
 import * as querystring from "query-string";
 import * as tree from "phrase-tree";
 
+
+console.log("trololo");
+
 let query = querystring.stringify({
     properties: JSON.stringify({
         annotators: "parse",
@@ -43,35 +46,30 @@ export function tree2Text(tree) {
 }
 
 
-export function removeFluff(tree, remove=false) {
+function isLeaf(tree) { return tree.text !== ""; }
+
+
+export function removeFluff(tree, remove=true) {
+  console.log(tree.tag, tree.text);
   let newChildren;
   switch(tree.tag) {
-    case "ROOT":
-    case "SENT":
-        newChildren = tree.children
-            .map(x => removeFluff(x, true))
-            .filter(x => x !== undefined);
-        return {
-            tag: tree.tag,
-            text: tree.text,
-            children: newChildren
-        };
-    case "NP":
-        newChildren = tree.children
-            .map(x => removeFluff(x, true))
-            .filter(x => x !== undefined);
-        return {
-            tag: tree.tag,
-            text: tree.text,
-            children: newChildren
-        };
     case "ADV":
     case "AP":
     case "ADJ":
         return remove ? undefined : tree;
 
     default:
-        return tree;
+        if (isLeaf(tree)) return tree;
+
+        newChildren = tree.children
+            .map(x => removeFluff(x, true))
+            .filter(x => x);
+        if (newChildren.length === 0) return undefined;
+        return {
+            tag: tree.tag,
+            text: tree.text,
+            children: newChildren
+        };
   }
 }
 
@@ -79,3 +77,9 @@ window.f = parse;
 window.t2t = tree2Text;
 window.removeFluff = removeFluff;
 
+
+console.log({
+  f: parse,
+  t2t: tree2Text,
+  rf: removeFluff
+})
