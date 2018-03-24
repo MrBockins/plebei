@@ -10,7 +10,5 @@ class App {
     console.log('----------');
   }
 }
-
-document.onload = function() {
-  new App();
-};
+console.log('----------'); console.log('----------'); console.log('----------'); console.log('----------'); console.log('----------');
+new App();

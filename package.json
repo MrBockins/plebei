@@ -4,9 +4,9 @@
   "description": "chrome extension for radio-canada hackathon 2018",
   "main": "plebei.js",
   "scripts": {
-    "dev-content": "webpack --config webpack.content.config.js -w",
     "dev-popup": "webpack --config webpack.popup.config.js -w",
-    "dev-build": "webpack --config webpack.popup.config.js && webpack --config webpack.content.config.js"
+    "dev-widget": "webpack --config webpack.widget.config.js -w",
+    "dev-build": "webpack --config webpack.popup.config.js && webpack --config webpack.widget.config.js"
   },
   "repository": {
     "type": "git",
