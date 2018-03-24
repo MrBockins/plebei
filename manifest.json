@@ -16,7 +16,7 @@
         "http://*.radio-canada.ca/*"
       ],
       "js": [
-        "plebei.js"
+        "popup.js"
       ]
     }
   ]

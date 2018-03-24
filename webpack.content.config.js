@@ -5,12 +5,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
-    path.join(__dirname, 'src/scripts/app.js'),
+    path.join(__dirname, 'src/scripts/content.js'),
     path.join(__dirname, 'src/styles/main.scss')
   ],
   output: {
     path: path.join(__dirname, 'dist/'),
-    filename: 'plebei.js',
+    filename: 'popup.js',
   },
   module: {
     rules: [
