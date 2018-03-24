@@ -52,7 +52,8 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: 'manifest.json' },
-      { from: 'index.html', cache: true }
+      { from: 'index.html', cache: true },
+      { from: 'templates.html', cache: true },
     ])
   ]
 };
