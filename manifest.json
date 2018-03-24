@@ -7,11 +7,17 @@
     "default_popup": "index.html"
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "http://*.radio-canada.ca/*"
   ],
-  "web_accessible_resources": [
-    "*.png",
-    "main.css",
-    "plebei.js"
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*.radio-canada.ca/*"
+      ],
+      "js": [
+        "plebei.js"
+      ]
+    }
   ]
 }

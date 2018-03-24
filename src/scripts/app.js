@@ -3,7 +3,6 @@ import axios from "axios";
 class Plebei {
   constructor () {
     this.bindEvents();
-    // this.fetchStuff('1091185');
   }
   bindEvents() {
     let fetchBtn = document.querySelectorAll('.js-fetch')[0]
@@ -16,7 +15,7 @@ class Plebei {
       url: `http://services.radio-canada.ca/neuro/v1/news-stories/${id}`
     })
     .then(function (response) {
-      console.log(response.data.body.html);
+      // console.log(response.data.body.html);
     });
   }
 }
