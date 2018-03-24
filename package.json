@@ -36,6 +36,7 @@
     "webpack-cli": "^2.0.13"
   },
   "dependencies": {
+    "@material/slider": "^0.33.0",
     "axios": "^0.18.0"
   }
 }

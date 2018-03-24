@@ -3,9 +3,6 @@
   "name": "Plebei",
   "version": "1",
   "description": "Vulgarisateur de nouvelle radio-canada",
-  "browser_action": {
-    "default_popup": "index.html"
-  },
   "permissions": [
     "activeTab",
     "http://*.radio-canada.ca/*"
