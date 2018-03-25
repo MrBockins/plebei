@@ -964,7 +964,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 class App {
   constructor() {
-    this.mediaId = document.querySelectorAll('meta[name="rc.idMedia"]')[0].content;
+    this.mediaId = document.querySelectorAll('meta[name="rc.idMedia"]')[0];
+
+    if (this.mediaId === undefined) {
+      return;
+    }
+
+    this.mediaId = this.mediaId.content;
     this.elementContext = undefined;
 
     this._injectElement();
@@ -1009,10 +1015,16 @@ class App {
 
       this.elementContext = parent.querySelector('#plebei-popup');
 
-      this._getNews(this.mediaId);
+      this._bindEvents();
     });
   }
-  _bindEvents() {}
+  _bindEvents() {
+    document.getElementById('plebei-toggle').addEventListener('change', e => {
+      if (e.target.checked) {
+        this._getNews(this.mediaId);
+      }
+    });
+  }
 }
 
 new App();

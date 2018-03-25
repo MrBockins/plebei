@@ -1,4 +1,9 @@
 .plebei-popup {
+
+    &.hidden {
+        display:none !important;
+    }
+
     padding: 15px;
     height: 100%;
     box-sizing: border-box; // position: fixed;

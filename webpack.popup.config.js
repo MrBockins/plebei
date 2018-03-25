@@ -53,6 +53,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: 'manifest.json' },
+      { from: 'src/assets/*.png' },
       { from: 'index.html', cache: true },
       { from: 'templates.html', cache: true },
       { from: 'options.html', cache: true }
