@@ -4,11 +4,6 @@ import tree from "phrase-tree";
 import * as util from "util";
 
 
-
-
-
-
-
 let query = querystring.stringify({
     properties: JSON.stringify({
         annotators: "parse",
@@ -111,8 +106,7 @@ export function removeFluff(tree, remove=true) {
 const funnyMod = [
   'tabarnouche',
   'tabaslaque',
-  'torrieu',
-  'scramouille',
+  'sacramouille',
   'baptême',
   'diable',
   'saperlipopette',
