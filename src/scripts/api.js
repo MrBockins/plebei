@@ -18,8 +18,6 @@ export function parse(text) {
 
   text = text.replace(/[()]/g, p => ({"(": "{", ")": "}"}[p]));
 
-
-
   return axios.post(
     nlpURL,
     text,

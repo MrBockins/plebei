@@ -73,8 +73,21 @@ class App {
 new App();
 
 
+
+
+let algos = {
+  "simple": removeFluff,
+  "trololo": makeItFunny,
+  "normal": x => x
+}
+
+
 function transform(text, config) {
   return parse(text).then(r=>{
-    return r.parsedData.map(makeItFunny).map(tree2Text).join(" ");
+    return new Promise((resolve,reject) => {
+      let algo = chrome.storage.sync.get(['algo'], function (algo) {
+          resolve(r.parsedData.map(algos[algo]).map(tree2Text).join(" "));
+      });
+    });
   });
 }

@@ -56,7 +56,8 @@ module.exports = {
       { from: 'src/assets/*.png' },
       { from: 'index.html', cache: true },
       { from: 'templates.html', cache: true },
-      { from: 'options.html' }
+      { from: 'options.html' },
+      { from: 'options.js' }
     ])
   ]
 };
