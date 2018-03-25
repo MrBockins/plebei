@@ -4,10 +4,10 @@ import tree from "phrase-tree";
 import * as util from "util";
 
 
-console.log(util);
 
-console.log(querystring);
-console.log("trololo");
+
+
+
 
 let query = querystring.stringify({
     properties: JSON.stringify({
@@ -23,7 +23,7 @@ export function parse(text) {
 
   text = text.replace(/[()]/g, p => ({"(": "{", ")": "}"}[p]));
 
-  console.log(text);
+
 
   return axios.post(
     nlpURL,
@@ -36,7 +36,7 @@ export function parse(text) {
   ).then(response => {
     response.parsedData = response.data.sentences.map(x => {
         let t = tree(x.parse);
-        console.log(util.inspect(t, {colors:true, depth:null}));
+
         return t;
     });
     return response;
@@ -97,7 +97,7 @@ export function removeFluff(tree, remove=true) {
         }
         case "PP": {
             let child = tree.children[0];
-            console.log(child);
+
             if (child.tag === "PRON" && child.text.match(/^qui$/i)) {
                 return undefined;
             }

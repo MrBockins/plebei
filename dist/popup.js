@@ -1939,11 +1939,6 @@ module.exports = function spread(callback) {
 
 
 
-console.log(__WEBPACK_IMPORTED_MODULE_3_util__);
-
-console.log(__WEBPACK_IMPORTED_MODULE_1_query_string__);
-console.log("trololo");
-
 let query = __WEBPACK_IMPORTED_MODULE_1_query_string__["stringify"]({
     properties: JSON.stringify({
         annotators: "parse",
@@ -1957,8 +1952,6 @@ function parse(text) {
 
     text = text.replace(/[()]/g, p => ({ "(": "{", ")": "}" })[p]);
 
-    console.log(text);
-
     return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(nlpURL, text, {
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -1966,7 +1959,7 @@ function parse(text) {
     }).then(response => {
         response.parsedData = response.data.sentences.map(x => {
             let t = __WEBPACK_IMPORTED_MODULE_2_phrase_tree___default()(x.parse);
-            console.log(__WEBPACK_IMPORTED_MODULE_3_util__["inspect"](t, { colors: true, depth: null }));
+
             return t;
         });
         return response;
@@ -2027,7 +2020,7 @@ function removeFluff(tree, remove = true) {
         case "PP":
             {
                 let child = tree.children[0];
-                console.log(child);
+
                 if (child.tag === "PRON" && child.text.match(/^qui$/i)) {
                     return undefined;
                 }
