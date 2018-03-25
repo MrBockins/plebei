@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "Plebei",
+  "version": "1",
+  "description": "Vulgarisateur de nouvelle radio-canada",
+  "permissions": [
+    "activeTab",
+    "http://*.radio-canada.ca/*",
+    "http://nlp.eastus.cloudapp.azure.com/nlp"
+  ],
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*.radio-canada.ca/*"
+      ],
+      "js": [
+        "popup.js"
+      ],
+      "css": [
+        "main.css"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    "/templates.html"
+  ]
+}
