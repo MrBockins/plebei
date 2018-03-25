@@ -33,7 +33,10 @@ class App {
 
   _transformLine(from, to){
     const line = from.innerText; 
-    return transform(line).then(tline => to.innerText = tline); //ICI remplacer par code ALEX...
+    return (transform(line)
+      .catch(e => { console.error(e); return line})
+      .then(tline => to.innerText = tline)
+    ); //ICI remplacer par code ALEX...
   }
 
   _injectElement() {
@@ -63,5 +66,5 @@ new App();
 function transform(text, config) {
   return parse(text).then(r=>{
     return r.parsedData.map(makeItFunny).map(tree2Text).join(" ");
-  }).catch(e => console.error(e));
+  });
 }

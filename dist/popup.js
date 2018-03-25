@@ -991,7 +991,9 @@ class App {
 
   _transformLine(from, to) {
     const line = from.innerText;
-    return transform(line).then(tline => to.innerText = tline); //ICI remplacer par code ALEX...
+    return transform(line).catch(e => {
+      console.error(e);return line;
+    }).then(tline => to.innerText = tline); //ICI remplacer par code ALEX...
   }
 
   _injectElement() {
@@ -1018,7 +1020,7 @@ new App();
 function transform(text, config) {
   return Object(__WEBPACK_IMPORTED_MODULE_1__api__["b" /* parse */])(text).then(r => {
     return r.parsedData.map(__WEBPACK_IMPORTED_MODULE_1__api__["a" /* makeItFunny */]).map(__WEBPACK_IMPORTED_MODULE_1__api__["c" /* tree2Text */]).join(" ");
-  }).catch(e => console.error(e));
+  });
 }
 
 /***/ }),
