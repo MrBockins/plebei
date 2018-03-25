@@ -8,6 +8,7 @@
     "http://*.radio-canada.ca/*",
     "http://nlp.eastus.cloudapp.azure.com/nlp"
   ],
+  "options_page": "options.html",
   "content_scripts": [
     {
       "matches": [
