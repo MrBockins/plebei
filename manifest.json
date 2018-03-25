@@ -8,6 +8,11 @@
     "http://*.radio-canada.ca/*",
     "http://nlp.eastus.cloudapp.azure.com/nlp"
   ],
+  "icons": {
+    "16": "src/assets/Logo_19x.png",
+    "48": "src/assets/Logo_48x.png",
+    "128": "src/assets/Logo_148x.png"
+  },
   "options_page": "options.html",
   "content_scripts": [
     {
