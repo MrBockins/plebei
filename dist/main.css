@@ -73,6 +73,8 @@
   padding: 15px;
   height: 100%;
   box-sizing: border-box; }
+  .plebei-popup.hidden {
+    display: none !important; }
   .plebei-popup * {
     box-sizing: border-box; }
   .plebei-popup .plebei-header {
