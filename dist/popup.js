@@ -1029,9 +1029,11 @@ class App {
 
 new App();
 
+let algos = [__WEBPACK_IMPORTED_MODULE_1__api__["c" /* removeFluff */], __WEBPACK_IMPORTED_MODULE_1__api__["a" /* makeItFunny */]];
+
 function transform(text, config) {
   return Object(__WEBPACK_IMPORTED_MODULE_1__api__["b" /* parse */])(text).then(r => {
-    return r.parsedData.map(__WEBPACK_IMPORTED_MODULE_1__api__["a" /* makeItFunny */]).map(__WEBPACK_IMPORTED_MODULE_1__api__["c" /* tree2Text */]).join(" ");
+    return r.parsedData.map(algos[1]).map(__WEBPACK_IMPORTED_MODULE_1__api__["d" /* tree2Text */]).join(" ");
   });
 }
 
@@ -1923,8 +1925,8 @@ module.exports = function spread(callback) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["b"] = parse;
-/* harmony export (immutable) */ __webpack_exports__["c"] = tree2Text;
-/* unused harmony export removeFluff */
+/* harmony export (immutable) */ __webpack_exports__["d"] = tree2Text;
+/* harmony export (immutable) */ __webpack_exports__["c"] = removeFluff;
 /* harmony export (immutable) */ __webpack_exports__["a"] = makeItFunny;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);

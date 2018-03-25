@@ -1,5 +1,5 @@
 import axios from "axios";
-import {parse,tree2Text, makeItFunny} from "./api";
+import {parse,tree2Text, makeItFunny, removeFluff} from "./api";
 
 class App {
   constructor() {
@@ -72,22 +72,17 @@ class App {
 
 new App();
 
-
-
-
-let algos = {
-  "simple": removeFluff,
-  "trololo": makeItFunny,
-  "normal": x => x
-}
-
+let algos = [
+  removeFluff,
+  makeItFunny
+];
 
 function transform(text, config) {
   return parse(text).then(r=>{
-    return new Promise((resolve,reject) => {
-      let algo = chrome.storage.sync.get(['algo'], function (algo) {
-          resolve(r.parsedData.map(algos[algo]).map(tree2Text).join(" "));
-      });
+    return (r.parsedData
+          .map(algos[1])
+          .map(tree2Text)
+          .join(" ")
+        );
     });
-  });
 }
