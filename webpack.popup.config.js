@@ -55,7 +55,7 @@ module.exports = {
       { from: 'manifest.json' },
       { from: 'index.html', cache: true },
       { from: 'templates.html', cache: true },
-      { from: 'options.html', cache: true }
+      { from: 'options.html' }
     ])
   ]
 };

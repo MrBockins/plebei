@@ -4,45 +4,183 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
+<title title="Plebei">PLEBEI</title>
+  <style>
+    *{
+      box-sizing: border-box;
+    }
+
+    body{
+      background-color:#ececec;
+    }
+    .plebei-popup{
+      width: 400px;
+      margin: 0 auto;
+    }
+  .plebei-popup .form-control {
+    padding: 15px;
+    height: 100%;
+    box-sizing: border-box; }
+  .plebei-popup .form-control label {
+    margin-bottom: 10px;
+    display: block; }
+  .plebei-popup .form-control.radio {
+    overflow: hidden; }
+    .plebei-popup .form-control.radio input[type="radio"] {
+      position: absolute;
+      left: -99999px;
+      top: -99999px; }
+    .plebei-popup .form-control.radio label {
+      cursor: pointer;
+      display: inline-block;
+      text-align: center;
+      width: 100%;
+      padding-left: 0;
+      line-height: 19px;
+      margin-top: 10px; }
+      .plebei-popup .form-control.radio label:before {
+        width: 35px;
+        height: 35px;
+        margin-right: 20px;
+        content: ' ';
+        display: inline-block; }
+    .plebei-popup .form-control.radio input[type="radio"] + label:before {
+      border-radius: 100%;
+      width: 35px;
+      height: 35px;
+      background: #e0e0e0;
+      margin: 0 auto;
+      display: inline-block; }
+    .plebei-popup .form-control.radio input[type="radio"]:checked + label:before {
+      background: #257ab1; }
+  .plebei-popup .form-control .slidecontainer {
+    margin: 0 auto; }
+    .plebei-popup .form-control .slidecontainer .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 7px;
+      border-radius: 100px;
+      background: #d3d3d3;
+      outline: none;
+      -webkit-transition: .2s;
+      transition: opacity .2s; }
+      .plebei-popup .form-control .slidecontainer .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #257ab1;
+        cursor: pointer; }
+      .plebei-popup .form-control .slidecontainer .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #257ab1;
+        cursor: pointer; }
+
+.plebei-popup .switch {
+  display: flex;
+  width: 100%; }
+  .plebei-popup .switch .form-control {
+    flex: 1; }
+
+.plebei-popup {
+  padding: 15px;
+  height: 100%;
+  box-sizing: border-box; }
+  .plebei-popup * {
+    box-sizing: border-box; }
+  .plebei-popup .plebei-header {
+    width: 100%;
+    padding: 20px 15px 20px 50px;
+    color: #fff;
+    box-shadow: 2px 4px 12px -4px rgba(0, 0, 0, 0.5);
+    /*background: #c00;*/
+    background-color: #ffc100;
+  }
+    .plebei-popup .plebei-header h1 {
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 0; }
+    .plebei-popup .plebei-header p {
+      font-size: 14px; }
+  .plebei-popup .plebei-body {
+    width: 100%;
+    padding: 10px 15px 20px;
+    background: #fff;
+    box-shadow: inset 0 0 10px #f4f3f3;
+    box-shadow: 2px 4px 12px -4px rgba(0, 0, 0, 0.5);
+    border: 1px solid lightgray; }
+
+    .plebei-popup h3 {
+      color:#777777;
+      text-align: right;
+    }
+
+    .plebei-popup .plebei-validation{
+      border-top: 1px solid #eeeeee;
+      width: 80%;
+      margin: 0 auto;
+    }
+    .plebei-popup .plebei-validation p {
+      color:#777777;
+      text-align: right;
+    }
+
+    .plebei-popup .bgSide{
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+  </style>
 </head>
 <body>
+  <div class="plebei-popup">
   <div class="plebei-header">
-    <h1>PLEBEI</h1>
+    <h1 title="plebei">PLEBEI</h1>
     <p>vulgarisateur radio-canda</p>
+    <div class="bgSide"></div>
   </div>
   <div class="plebei-body">
     <div class="form-control">
-      <label class='sliderLabel'>Simplifier selon l'âge</label>
+      <label title="adapter selon age" class='sliderLabel'>Adapter selon l'âge</label>
       <div class='slidecontainer'>
-        <input type='range' min='1' max='100' value='50' class='slider' id='myRange' />
+        <input title="glisseur age" type='range' min='1' max='100' value='50' class='slider' id='myRange1' />
       </div>
     </div>
     <div class="form-control">
-      <label class='sliderLabel'>Vulgariser selon la formalité</label>
+      <label title="adapter le ton" class='sliderLabel'>Adapter le ton</label>
       <div class='slidecontainer'>
-        <input type='range' min='1' max='100' value='50' class='slider' id='myRange' />
+        <input title="glisseur ton" type='range' min='1' max='100' value='50' class='slider' id='myRange2' />
       </div>
     </div>
     <div class='switch'>
       <div class="form-control radio">
         <input name='switch' id='one' type='radio' />
-        <label for='one' class='switch_label'>Simplifier</label>
+        <label title="simplifier" for='one' class='switch_label'><br/>Simplifier</label>
       </div>
       <div class="form-control radio">
-        <input name='switch' id='two' type='radio' />
-        <label for='two' class='switch_label'>Normal</label>
+        <input name='switch' id='two' type='radio' checked="true"/>
+        <label title="normal" for='two' class='switch_label'><br/>Normal</label>
       </div>
       <div class="form-control radio">
         <input name='switch' id='three' type='radio' />
-        <label for='three' class='switch_label'>Alternatif</label>
+        <label title="alternatif" for='three' class='switch_label'><br/>Alternatif</label>
       </div>
     </div>
     <div class='switch_indicator'></div>
     <div class='plebei-validation'>
-      <h3>Ce filtre a été ajsjspprouvé part:</h3>
-      <p>Nom du journaliste</p>
+      <h3 title="adaptations approuvées part">Adaptations approuvées par:</h3>
+      <p><i class="far fa-check-square"></i>[Nom du journaliste]</p>
     </div>
   </div>
+</div>
 </body>
 </html>
