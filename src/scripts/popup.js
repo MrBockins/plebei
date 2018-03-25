@@ -14,7 +14,7 @@ class App {
       url: chrome.extension.getURL("/templates.html")
     }).then(response => {
       const parser = new DOMParser();
-      const parent = document.querySelectorAll(".header-audio-controller")[0];
+      const parent = document.querySelector("body");
       
       const template = parser.parseFromString(response.data, "application/xml").querySelector("#templates-popup").innerHTML;
       parent.insertAdjacentHTML("afterbegin", template)

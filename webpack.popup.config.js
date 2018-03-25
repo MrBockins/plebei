@@ -27,6 +27,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           use: [{
             loader: "css-loader" // translates CSS into CommonJS
