@@ -45,10 +45,10 @@ class App {
       url: chrome.extension.getURL("/templates.html")
     }).then(response => {
       const parser = new DOMParser();
-      const parent = document.querySelectorAll(".header-audio-controller")[0];
+      const parent = document.querySelectorAll(".bandeau-direct")[0];
       
       const template = parser.parseFromString(response.data, "application/xml").querySelector("#templates-popup").innerHTML;
-      parent.insertAdjacentHTML("afterbegin", template)
+      parent.insertAdjacentHTML("beforebegin", template)
       
       this.elementContext = parent.querySelector('#plebei-popup');
 

@@ -1,5 +1,38 @@
 .plebei-popup {
-    h1 {
-        color: red;
+    padding: 15px;
+    height: 100%;
+    box-sizing: border-box; // position: fixed;
+    // z-index: 99999;
+    // right: 0;
+    // top: 100px;
+    // width: 100%;
+    // max-width: 400px; // margin-right: -400px;
+    * {
+        box-sizing: border-box;
     }
+    .plebei-header {
+        width: 100%;
+        padding: 20px 15px 20px 50px;
+        color: #fff;
+        box-shadow: 2px 4px 12px -4px rgba(0, 0, 0, 0.50);
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAaCAYAAABCfffNAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3JpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo5MTkyOWI0My0xNWQxLWNhNGQtOGU1YS1iMzhhMWNjZjhjMDEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDIwNTEzM0UyRjlCMTFFODk0ODJBMDJBRkJCRDA5MEYiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDIwNTEzM0QyRjlCMTFFODk0ODJBMDJBRkJCRDA5MEYiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ZjRjNzg3ODQtMWU0Zi0zODRlLWFlZTYtNTBjZDc0MDVkZDFiIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDMTFCNzYwMkY4QzExRThBNzBEOTJGNkZGQ0U0OTVDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+LfHsDgAABc9JREFUeNqMVgtQlFUU/vbF+7mwwCqokZYIPhKRzDeaZWKYZEPEKGipY4gvQAtLzRlLB8epobS08BXahEqMjA8c8QUigQIuYaDrKzWDXR7Lvh9/5/4irstqnZkz++/9797vnO9895wVDI6IwhPjuj8F6Nf/BXh4eI68cP50jclkxLKVOYLw8IHYnrcVBoMedbU1OH3uMsRiMexNIEAvEx8uOt59PEcbHu3w8fbCoHA5RseOqwHHRVnM5tmazo78wEBZmqeXFycQCufRtr0CoZMTnZiwpVUF5q2tanIV7zeUt9HYdBcSF5f5Gk2nwsZxqz9auDh190/fc5UV5wrqa2v2VNc2c2KRWEtnfPFfIIKz5XW9UuV41rhcqdR/FQP18PCAn68P/mj8E/PnJprnJM0TL81YLlCr2+3P2k2e5owupyB2xYGXlyfR542uLi3/3NGpga+PN4wmE0RCIVpValit1h6q+YI61sRJdj0Abm5uUCpvYfnSBfD3l/JrZrOZD4YdKpeHIndbHgWgo+xt9r9/Ckj4LIDHIPv27OT5W5m5FpdraqC4Wo+KymqkL1uD8gtlaCQKxWIRnneO0GazgjnZr447O4madRs2YVZiMtZ/ngVpgB927T5IYQqwZOEHyFqzAZGRQyg7i7N6V1ksVjAXWiw9G9513GW1WmA0GpGVnQ2RSIQHf6uwIDUJV+oaMGHiVKSnf4yOjk57quwthjyI1Us4efwoQrPkO5Ue8c4iYUVnNjC8Hw7/Vorg4CAetKNDQwCcfdEdgrQeHDvmFYhNZhvRZUvtRSr3SG0yWQDMJjMLBBcq6zAgTIZfCktwvfkafHy8oNMbCKzDKRAFMNlstvYq/OOXFKkQYWF9caiwEO8kTMOS9ExkZy5HyfGzSH5vBtRtKsTGDENDQwPCQvva3a9eJmUSHtyrDZD+w0L7YMb0ONxUXse8+UsQNXQ4gkPkiIh4tL1Lo8GDfzrx4gA5PlyUgRUrVuGve/edgQxlIFJHmuTyIGRmrkDsmImor6/FiVOV1G5aQC2GVxwQzO+VB/lAp9PyHWFk9GiMGhUN1gUcmOMz0duvuLq6QKfV4+SxYsTEjsXadV/Rmisv2zt3bpFko3qFqrz9kKgbjlNlF3kWHNSmZSDN9iv+fn7IWLoY096ciZ07d+H3mjq+bRiNJsiCgnll2ZvZwiFE5g3OZkNxcTHi4uJ61NhtTQyky/Gy3lQ2QaFogEQswNRJMU6rubegGKkpsyCRSOBOdEnEElxrVCA+Pt4R5JbYRSJkKVbQl9d4bVNEer0eR4pPouRoES5XV2LchCk0rHJ7fuVL2XI2DknJaZD3CYWLiwtKTxzFnds3n5IyPd+VSEQQlp2vZtNt0eMX7JKxqZiSNBMlxYXQaruwf+8P/Prmrdv5z0EvRWDZqhz4+PrSHWmHiXVkWqdJ+pSOaW1h+cUrEHaPTwU5PxwYtyNGxEAqDUD/AeFUCwP/zOrxzbZNmJu2GBMnTcOD+/dg6e5ZrtRI1aoWTHl9On857ew4A3ecJxxLnVnchGhkrMyBtksDvU4HGrtEiysfufVJv4ObuztaWh6i6NAB1CqUJOE21kHYK09qSTpnrT6WpR4YKMVb8bNxpLAAAQEyiChbrVZLB6ieAFBELAMGfub0CWzaksfXw2rlAeaQ6541T6qopbyq0Wjx7Xc7eM0X7P+R5zsgIBDuFDW7M+zgoOAQtLe3YV/+DkyOewMpye93q4pj3bzwuZPRz8/3UkL8VMFn6zdzh4qOYWvuFuTvysPAQYOpIfpCTJI1GgwEoIbyRjM2fvk1EhNnY9/+n1F1qUKStTrHYjAY8LzJyE/OIZHDsHFdtuDggQPjPvl07b3SsiqMp/nBqGwl/hktiXNSUF6pQMLbCW11dYrpZ8pKBaFh/S0s+/8z43kLDulDWfmXq1Tq0JiRQzA6evPLtBzJrgm5hoTaaLNyDbVXm2hMu9KfDO9n/iX6V4ABAOqDdQTIjl1pAAAAAElFTkSuQmCC') no-repeat center center;
+        h1 {
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 0;
+        }
+        p {
+            font-size: 14px;
+        }
+    }
+    .plebei-body {
+        width: 360px;
+        margin-left: 40px;
+        padding: 10px 15px 20px;
+        background: #fff;
+        box-shadow: inset 0 0 10px #f4f3f3;
+        box-shadow: 2px 4px 12px -4px rgba(0, 0, 0, 0.50);
+        border: 1px solid lightgray;
+    }
+    .plebei-validation {}
 }

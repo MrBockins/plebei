@@ -27,6 +27,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           use: [{
             loader: "css-loader" // translates CSS into CommonJS
@@ -54,6 +55,7 @@ module.exports = {
       { from: 'manifest.json' },
       { from: 'index.html', cache: true },
       { from: 'templates.html', cache: true },
+      { from: 'options.html', cache: true }
     ])
   ]
 };
