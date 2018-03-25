@@ -1,9 +1,15 @@
 import axios from "axios";
-//import {parse} from "./api";
+import {parse,tree2Text, makeItFunny} from "./api";
 
 class App {
   constructor() {
-    this.mediaId = document.querySelectorAll('meta[name="rc.idMedia"]')[0].content;
+    this.mediaId = document.querySelectorAll('meta[name="rc.idMedia"]')[0];
+  
+    if(this.mediaId === undefined) {
+      return;
+    }
+
+    this.mediaId = this.mediaId.content;
     this.elementContext = undefined;
 
     this._injectElement();
@@ -14,7 +20,7 @@ class App {
       method: 'get',
       url: `http://services.radio-canada.ca/neuro/v1/news-stories/${id}`
     })
-    .then(function (response) {
+    .then((response)=> {
       let responseHtml = response.data.body.html;
       const parser = new DOMParser();
 
@@ -22,13 +28,18 @@ class App {
 
       let elementsArray = flufflyfied.getElementsByTagName("p");
       let elementsInner =  document.querySelectorAll('.document-body')[0].getElementsByTagName("p");
-      
-      for(var index = 0; index < elementsArray.length; index++){
-        const line = elementsArray[index].innerText; 
-        let parsedLine = line + " Sua poudre!!!"; //ICI remplacer par code ALEX...
-        elementsInner[index].innerText = parsedLine;
+      let promise = Promise.resolve();
+      for(let index = 0; index < elementsArray.length; index++){
+        promise = promise.then(() =>
+          this._transformLine(elementsArray[index], elementsInner[index])
+        );
       }
     });
+  }
+
+  _transformLine(from, to){
+    const line = from.innerText; 
+    return transform(line).then(tline => to.innerText = tline); //ICI remplacer par code ALEX...
   }
 
   _injectElement() {
@@ -41,15 +52,26 @@ class App {
       
       const template = parser.parseFromString(response.data, "application/xml").querySelector("#templates-popup").innerHTML;
       parent.insertAdjacentHTML("beforebegin", template)
-      
+
       this.elementContext = parent.querySelector('#plebei-popup');
 
-      this._getNews(this.mediaId);
+      this._bindEvents();
     });
   }
   _bindEvents() {
-
+    document.getElementById('plebei-toggle').addEventListener('change', e =>{
+      if(e.target.checked) {
+        this._getNews(this.mediaId);
+      }
+    })
   }
 }
 
 new App();
+
+
+function transform(text, config) {
+  return parse(text).then(r=>{
+    return r.parsedData.map(makeItFunny).map(tree2Text).join(" ");
+  }).catch(e => console.error(e));
+}

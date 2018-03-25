@@ -1,8 +1,12 @@
 import axios from "axios";
 import * as querystring from "query-string";
-import * as tree from "phrase-tree";
+import tree from "phrase-tree";
+import * as util from "util";
 
 
+console.log(util);
+
+console.log(querystring);
 console.log("trololo");
 
 let query = querystring.stringify({
@@ -31,8 +35,9 @@ export function parse(text) {
     }
   ).then(response => {
     response.parsedData = response.data.sentences.map(x => {
-        console.log(x);
-        return tree(x.parse);
+        let t = tree(x.parse);
+        console.log(util.inspect(t, {colors:true, depth:null}));
+        return t;
     });
     return response;
   });
@@ -41,45 +46,118 @@ export function parse(text) {
 
 
 export function tree2Text(tree) {
-  if (tree.children.length === 0) return tree.text.replace(/[{}]/g, p => ({"{": "(", "}": ")"}[p]));
-  return tree.children.map(tree2Text).join(" ");
+
+  function inner(tree) {
+      if (tree.children.length === 0) {
+          return (tree.text
+              .replace(/[{}]/g, p => ({"{": "(", "}": ")"}[p]))
+          );
+      }
+      return tree.children.map(inner).join(" ");
+  }
+
+  return inner(tree).replace(/de le/g, "du");
 }
 
 
 function isLeaf(tree) { return tree.text !== ""; }
 
 
-export function removeFluff(tree, remove=true) {
-  console.log(tree.tag, tree.text);
-  let newChildren;
-  switch(tree.tag) {
-    case "ADV":
-    case "AP":
-    case "ADJ":
-        return remove ? undefined : tree;
+function removeFluffRecurse(tree, remove=true) {
+    if (isLeaf(tree)) { return tree; }
 
-    default:
-        if (isLeaf(tree)) return tree;
+    let newChildren = tree.children
+        .map(x => removeFluff(x, true))
+        .filter(x => x);
 
-        newChildren = tree.children
-            .map(x => removeFluff(x, true))
-            .filter(x => x);
-        if (newChildren.length === 0) return undefined;
-        return {
-            tag: tree.tag,
-            text: tree.text,
-            children: newChildren
-        };
-  }
+    if (newChildren.length === 0) { return undefined; }
+
+    return {
+        tag: tree.tag,
+        text: tree.text,
+        children: newChildren
+    };
 }
 
-window.f = parse;
-window.t2t = tree2Text;
-window.removeFluff = removeFluff;
+export function removeFluff(tree, remove=true) {
+    switch(tree.tag) {
+        case "ADJ":
+        case "ADV":
+        case "COORD":
+            return remove ? undefined : tree;
+        case "NP": {
+            if (tree.children[1] && tree.children[1].tag === "PUNCT" && tree.children[2] && tree.children[2].tag === "PP") {
+                return {
+                    tag: tree.tag,
+                    text: tree.text,
+                    children: tree.children.slice(0,1)
+                };
+            }
+            break;
+        }
+        case "PP": {
+            let child = tree.children[0];
+            console.log(child);
+            if (child.tag === "PRON" && child.text.match(/^qui$/i)) {
+                return undefined;
+            }
+        }
+    }
+    return removeFluffRecurse(tree, remove);
+}
 
 
-console.log({
-  f: parse,
-  t2t: tree2Text,
-  rf: removeFluff
-})
+
+const funnyMod = [
+  'tabarnouche',
+  'tabaslaque',
+  'torrieu',
+  'scramouille',
+  'baptême',
+  'diable',
+  'saperlipopette',
+  'ciboulette',
+  'bâtard'
+]
+
+
+export function makeItFunny(tree, prob=0.25) {
+    switch(tree.tag) {
+        case "NP": {
+            if (isLeaf(tree)) return tree;
+            if (tree.children[0].tag !== "DET") break;
+            if (tree.children[0].text.match(/'$/)) break;
+            if (Math.random() < 0.7) break;
+
+            let modifier = funnyMod[Math.floor(Math.random() * funnyMod.length)];
+
+            if (tree.children[0].text.match(/s$/)) { modifier += "s"; }
+
+            modifier += " de";
+
+            let mod = {
+                tag: "ADV",
+                text: modifier,
+                children: []
+            };
+
+            return {
+                tag: tree.tag,
+                text: tree.text,
+                children: [ makeItFunny(tree.children[0]), mod, ...tree.children.slice(1) .map(makeItFunny)]
+
+            };
+        }
+    }
+    if (isLeaf(tree)) { return tree; }
+
+    let newChildren = tree.children
+        .map(x => makeItFunny(x, prob));
+
+    return {
+        tag: tree.tag,
+        text: tree.text,
+        children: newChildren
+    };
+}
+
