@@ -2029,7 +2029,7 @@ function removeFluff(tree, remove = true) {
     return removeFluffRecurse(tree, remove);
 }
 
-const funnyMod = ['tabarnouche', 'tabaslaque', 'torrieu', 'scramouille', 'baptême', 'diable', 'saperlipopette', 'ciboulette', 'bâtard'];
+const funnyMod = ['tabarnouche', 'tabaslaque', 'sacramouille', 'baptême', 'diable', 'saperlipopette', 'ciboulette', 'bâtard'];
 
 function makeItFunny(tree, prob = 0.25) {
     switch (tree.tag) {
